@@ -33,7 +33,7 @@ orderRouter.post(
     });
 
     const order = await newOrder.save();
-    res.status(201).send({ message: 'New Order Created', order });
+    res.status(201).send({ message: 'Novo Pedido Criado', order });
   })
 );
 
@@ -98,7 +98,7 @@ orderRouter.get(
     if (order) {
       res.send(order);
     } else {
-      res.status(404).send({ message: 'Order Not Found' });
+      res.status(404).send({ message: 'Pedido Não Encontrado' });
     }
   })
 );
@@ -112,9 +112,10 @@ orderRouter.put(
       order.isDelivered = true;
       order.deliveredAt = Date.now();
       await order.save();
-      res.send({ message: 'Order Delivered' });
+      res.send({ message: 'Pedido Entregue' });
     } else {
-      res.status(404).send({ message: 'Order Not Found' });
+      res.status(404).send({ message: 'Pedido Não Encontrado' });
+     // res.status(404).send({ message: 'Order Not Found' });
     }
   })
 );
@@ -142,7 +143,7 @@ orderRouter.put(
         .messages()
         .send(
           {
-            from: 'Amazona <amazona@mg.yourdomain.com>',
+            from: 'Biblioteca <biblioteca@gmail.com>',
             to: `${order.user.name} <${order.user.email}>`,
             subject: `New order ${order._id}`,
             html: payOrderEmailTemplate(order),
@@ -156,9 +157,9 @@ orderRouter.put(
           }
         );
 
-      res.send({ message: 'Order Paid', order: updatedOrder });
+      res.send({ message: 'Pedido PAgo', order: updatedOrder });
     } else {
-      res.status(404).send({ message: 'Order Not Found' });
+      res.status(404).send({ message: 'Pedodio Não Encontrado' });
     }
   })
 );
