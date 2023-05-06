@@ -45,7 +45,7 @@ export default function MapScreen() {
   useEffect(() => {
     const fetch = async () => {
       const { data } = await axios('/api/keys/google', {
-        headers: { Authorization: `BEARER ${userInfo.token}` },
+        headers: { Authorization: 'EARER ${userInfo.token}' },
       });
       setGoogleApiKey(data.key);
       getUserCurrentLocation();
@@ -93,7 +93,7 @@ export default function MapScreen() {
         googleAddressId: places[0].id,
       },
     });
-    toast.success('location selected successfully.');
+    toast.success('local selecionado com sucesso.');
     navigate('/shipping');
   };
   return (
@@ -112,9 +112,9 @@ export default function MapScreen() {
             onPlacesChanged={onPlacesChanged}
           >
             <div className="map-input-box">
-              <input type="text" placeholder="Enter your address"></input>
+              <input type="text" placeholder="Digite se endereço"></input>
               <Button type="button" onClick={onConfirm}>
-                Confirm
+                Confirmar
               </Button>
             </div>
           </StandaloneSearchBox>
